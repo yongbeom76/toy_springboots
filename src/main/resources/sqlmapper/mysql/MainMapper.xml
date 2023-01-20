@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Main">
+    <resultMap id="userMap" type="Map">
+        <result property="userId" column="USER_ID"/>
+        <result property="userPw" column="USER_PW"/>
+        <result property="userPrivileges" column="PRIVILEGES"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="userSex" column="USER_SEX"/>
+        <result property="userPhoneNum" column="PHONENUMBER"/>
+        <result property="userEmail" column="EMAIL"/>
+        <result property="userAge" column="AGE"/>
+    </resultMap>
+
+    <!-- call -->
+    <select id="selectAllFromUsers" parameterType="Map" resultMap="userMap">
+        SELECT * 
+        FROM USERS
+    </select>
+</mapper>
