@@ -29,9 +29,9 @@
           <table class="table table-striped">
             <thead>
               <tr  class="text-center bg-info bg-warning">
-                <th colspan="8" >회원리스트</th>
+                <th colspan="9" >회원리스트</th>
               </tr>
-              <tr colspan="8" class="bg-warning bg-opacity-25">
+              <tr colspan="" class="bg-warning bg-opacity-25">
                 <th>아이디</th>
                 <th>비밀번호</th>
                 <th>권한</th>
@@ -40,6 +40,7 @@
                 <th>전화번호</th>
                 <th>이메일</th>
                 <th>나이</th>
+                <th>update/delete</th>
               </tr>
             </thead>
             <tbody>
@@ -64,6 +65,7 @@
                   <td><%=userPhoneNum%></td>
                   <td><%=userEmail%></td>
                   <td><%=userAge%></td>
+                  <td><button class="btn btn-primary btn-sm">Update</button>&nbsp;<button class="btn btn-primary btn-sm">Delete</button></td>
                 </tr>
               <%
                 }
