@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +26,16 @@ public class MainController {
     @GetMapping("/seeMemberList")
     public ModelAndView seeMemberList(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
         Object userList = mainService.getUserList(params);
+        modelAndView.addObject("userList", userList);
+        modelAndView.setViewName("seeMemberList");
+        return modelAndView;
+    }
+
+    @GetMapping("/delete/{userId}")
+    public ModelAndView seeMemberList(@RequestParam Map<String, Object> params, @PathVariable String userId,
+            ModelAndView modelAndView) {
+        params.put("userId", userId);
+        Object userList = mainService.deleteAndList(params);
         modelAndView.addObject("userList", userList);
         modelAndView.setViewName("seeMemberList");
         return modelAndView;

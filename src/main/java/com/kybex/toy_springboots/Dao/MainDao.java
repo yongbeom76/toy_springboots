@@ -13,4 +13,15 @@ public class MainDao {
         Object result = sqlSessionTemplate.selectList(sqlMapId, dataMap);
         return result;
     }
+
+    public Object deleteOne(String sqlMapId, Object dataMap) {
+        Object result = sqlSessionTemplate.delete(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object deleteSurvey(String sqlMapId, Object dataMap) {
+        Object result = sqlSessionTemplate.delete(sqlMapId, dataMap);
+        return result;
+    }
+
 }

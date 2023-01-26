@@ -16,4 +16,24 @@ public class MainService {
         Object result = mainDao.getUserList(sqlMapId, dataMap);
         return result;
     }
+
+    public Object deleteAndList(Object dataMap) {
+        this.deleteSurvey(dataMap);
+        this.deleteOne(dataMap);
+        Object result = this.getUserList(dataMap);
+        return result;
+    }
+
+    public Object deleteOne(Object dataMap) {
+        String sqlMapId = "Main.deleteOne";
+        Object result = mainDao.deleteOne(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object deleteSurvey(Object dataMap) {
+        String sqlMapId = "Main.deleteSurvey";
+        Object result = mainDao.deleteSurvey(sqlMapId, dataMap);
+        return result;
+    }
+
 }

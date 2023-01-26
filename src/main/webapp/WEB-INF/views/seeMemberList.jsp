@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,16 +24,12 @@
     <main class="d-flex align-items-center" style="height: 40rem">
       <div class="container">
         <div>
-          <%
-            ArrayList userList = (ArrayList) request.getAttribute("userList");
-          %>
-          
           <table class="table table-striped">
             <thead>
               <tr  class="text-center bg-info bg-warning">
-                <th colspan="9" >회원리스트</th>
+                <th colspan="10" >회원리스트</th>
               </tr>
-              <tr colspan="" class="bg-warning bg-opacity-25">
+              <tr class="bg-warning bg-opacity-25">
                 <th>아이디</th>
                 <th>비밀번호</th>
                 <th>권한</th>
@@ -40,37 +38,33 @@
                 <th>전화번호</th>
                 <th>이메일</th>
                 <th>나이</th>
-                <th>update/delete</th>
+                <th>update</th>
+                <th>delete</th>
               </tr>
             </thead>
             <tbody>
-              <% 
-                for(int i=0; i<userList.size(); i++) {
-                  HashMap row = (HashMap) userList.get(i);
-                  String userId = (String) row.get("userId");
-                  String userPw = (String) row.get("userPw");
-                  String userPrivileges = (String) row.get("userPrivileges");
-                  String userName = (String) row.get("userName");
-                  String userSex = (String) row.get("userSex");
-                  String userPhoneNum = (String) row.get("userPhoneNum");
-                  String userEmail = (String) row.get("userEmail");
-                  String userAge = (String) row.get("userAge");
-              %>
-                <tr>
-                  <td><%=userId%></td>
-                  <td><%=userPw%></td>
-                  <td><%=userPrivileges%></td>
-                  <td><%=userName%></td>
-                  <td><%=userSex%></td>
-                  <td><%=userPhoneNum%></td>
-                  <td><%=userEmail%></td>
-                  <td><%=userAge%></td>
-                  <td><button class="btn btn-primary btn-sm">Update</button>&nbsp;<button class="btn btn-primary btn-sm">Delete</button></td>
-                </tr>
-              <%
-                }
-              %>
-              
+            <c:forEach items="${userList}" var="user" varStatus="loop">
+              <tr>
+                <td>${user.userId}</td>
+                <td>${user.userPw}</td>
+                <td>${user.userPriviliges}</td>
+                <td>${user.userName}</td>
+                <td>${user.userSex}</td>
+                <td>${user.userPhoneNum}</td>
+                <td>${user.userEmail}</td>
+                <td>${user.userAge}</td>
+                <td>
+                  <form action="/update/${user.userId}">
+                    <button class="btn btn-primary btn-sm">Update</button>&nbsp;
+                  </form>
+                </td>
+                <td>
+                  <form action="/delete/${user.userId}">
+                    <button class="btn btn-primary btn-sm">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            </c:forEach>
             </tbody>
           </table>
         

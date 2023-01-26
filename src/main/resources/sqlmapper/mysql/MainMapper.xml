@@ -18,4 +18,18 @@
         SELECT * 
         FROM USERS
     </select>
+    
+    <!-- call Main.deleteOne -->
+    <select id="deleteOne" parameterType="Map">
+        DELETE FROM USERS
+        WHERE USER_ID = #{userId}
+    </select>
+    
+    <!-- call Main.deleteSurvey -->
+    <select id="deleteSurvey" parameterType="Map">
+        DELETE FROM USERS_ANSWER
+        WHERE USER_ID = #{userId}
+    </select>
+
+
 </mapper>
