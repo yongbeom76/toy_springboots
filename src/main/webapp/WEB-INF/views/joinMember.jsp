@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +41,7 @@
     %>
         <div class="container">
       <div class="fs-3 text-center mt-3 mb-4">회원가입</div>
-      <form action="/joinMemberServlet" onsubmit="return validateForm()" name="joinForm" method="post">
+      <form action="/insert" onsubmit="return validateForm()" name="joinForm" method="post">
         <table class="table">
           <tr>
             <th>이름</th>
@@ -108,9 +110,6 @@
                 <div class="col-8">
                   <input class="form-control" type="text" name="id" value="<%=id%>" id="id"/>
                 </div>
-                <div class="col-4">
-                  <button name="isFinish" value="notFin" class="btn btn-outline-primary" onclick="validateForm(true)" type="submit">아이디 중복확인</button>
-                </div>
                 <% // id 중복
                 String isDup = (String)request.getAttribute("isDup");
                 if(isDup!=null) {%>
@@ -138,7 +137,7 @@
 
 
     <%@ include file="footer.jsp" %>
-    <script src="./js/joinMemberScript.js"></script>
+    <script src="joinMemberScript.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

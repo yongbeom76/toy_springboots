@@ -36,4 +36,28 @@ public class MainService {
         return result;
     }
 
+    public Object insert(Object dataMap) {
+        String sqlMapId = "Main.insert";
+        Object result = mainDao.insert(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object insertAndGetList(Object dataMap) {
+        Object result = this.insert(dataMap);
+        result = this.getUserList(dataMap);
+        return result;
+    }
+
+    public Object selectOne(Object dataMap) {
+        String sqlMapId = "Main.selectOne";
+        Object result = mainDao.selectOne(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object updateOne(Object dataMap) {
+        String sqlMapId = "Main.updateOne";
+        Object result = mainDao.updateOne(sqlMapId, dataMap);
+        return result;
+    }
+
 }

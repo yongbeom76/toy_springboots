@@ -27,7 +27,12 @@
           <table class="table table-striped">
             <thead>
               <tr  class="text-center bg-info bg-warning">
-                <th colspan="10" >회원리스트</th>
+                <th colspan="8" >회원리스트 (pagination 아직 적용 못했고, 우분투 서버에 올리는 것만 연습했어요)</th>
+                <th colspan="2">
+                  <form action="/insert" method="post">
+                    <button class="btn btn-sm btn-primary">Insert</button>
+                  </form>
+                </th>
               </tr>
               <tr class="bg-warning bg-opacity-25">
                 <th>아이디</th>
@@ -54,8 +59,9 @@
                 <td>${user.userEmail}</td>
                 <td>${user.userAge}</td>
                 <td>
-                  <form action="/update/${user.userId}">
+                  <form action="/update" method="post">
                     <button class="btn btn-primary btn-sm">Update</button>&nbsp;
+                    <input type="hidden"  name="userId" value='${user.userId}'/>
                   </form>
                 </td>
                 <td>
