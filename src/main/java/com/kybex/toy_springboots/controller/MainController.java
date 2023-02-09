@@ -25,15 +25,13 @@ public class MainController {
     public ModelAndView main(ModelAndView modelAndView) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        String username = null;
         if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
+            String username = ((UserDetails) principal).getUsername();
+            System.out.println("username:" + username);
+            System.out.println("principal:" + principal);
         } else {
-            username = principal.toString();
+            String username = principal.toString();
         }
-
-        System.out.println("username:" + username);
-        System.out.println("principal:" + principal);
 
         modelAndView.setViewName("index");
         return modelAndView;
